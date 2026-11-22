@@ -8,7 +8,7 @@ import SizeGuide from "./SizeGuide";
 import { LAUNCH_DATE, SIZES, isLowStock, sizeName } from "@/lib/sizes";
 import { hasLaunched, longLaunch } from "@/lib/launch";
 
-// Top of the page, in order: nav bar, title block (name, grey colorway line, price), photo, size grid.
+// Top of the page, in order: nav bar, title block (name, grey category line, price), photo, size grid.
 // The sticky bar stays pinned to the bottom. Before the launch date from the stock feed it is disabled
 // and says "Launching 10 December"; from the launch date on it says "Add to bag".
 export default function ShoeApp() {
@@ -61,7 +61,7 @@ export default function ShoeApp() {
       <main>
         <section className="title gutter" aria-label="Product">
           <h1>Nike Pegasus 43</h1>
-          <p className="meta">Black/White-Volt</p>
+          <p className="meta">Road running shoe</p>
           <div className="price-row">
             <span className="price" data-testid="price">$140</span>
             <span className="reviews">
