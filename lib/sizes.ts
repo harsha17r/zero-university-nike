@@ -24,6 +24,9 @@ export const SIZES: Size[] = [...feed]
     status: row.stock_status as Status,
   }));
 
+// Release date, shared by every row of the feed.
+export const LAUNCH_DATE: string = feed[0].launch_date;
+
 export const isSoldOut = (s: Size) => s.status === "sold_out";
 export const isLowStock = (s: Size) => s.status === "low_stock";
 export const sizeName = (s: Size) => `M ${s.men} / W ${s.women}`;

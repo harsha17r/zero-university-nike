@@ -403,6 +403,17 @@ button {
   transform: scale(0.99);
 }
 
+/* Before the launch date: same size, clearly inactive. */
+.cta:disabled {
+  background: color-mix(in oklab, var(--fg) 12%, var(--bg));
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+.cta:disabled:active {
+  transform: none;
+}
+
 /* Size guide sheet */
 dialog.sheet {
   margin: auto 0 0;
