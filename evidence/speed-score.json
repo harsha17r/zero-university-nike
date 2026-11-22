@@ -1,6 +1,6 @@
 {
   "url": "https://zero-university-nike.vercel.app/",
-  "measured_at": "2026-11-22T22:12Z",
+  "measured_at": "2026-11-22T22:15Z",
   "tool": "Lighthouse 13.6.0 (CLI), performance category only",
   "settings_file": "lighthouse.config.json (from the Slow 4G mobile check profile)",
   "settings": {
@@ -22,44 +22,64 @@
       "score": 100,
       "cls": 0,
       "layout_shifts": 0,
-      "fcp_ms": 828,
-      "lcp_ms": 828,
-      "tbt_ms": 32,
-      "speed_index_ms": 926
+      "fcp_ms": 803,
+      "lcp_ms": 1548,
+      "tbt_ms": 45,
+      "speed_index_ms": 905
     },
     {
       "run": 2,
       "score": 100,
       "cls": 0,
       "layout_shifts": 0,
-      "fcp_ms": 783,
-      "lcp_ms": 1533,
-      "tbt_ms": 32,
-      "speed_index_ms": 783
+      "fcp_ms": 782,
+      "lcp_ms": 1832,
+      "tbt_ms": 15,
+      "speed_index_ms": 782
     },
     {
       "run": 3,
       "score": 100,
-      "cls": 3e-05,
-      "layout_shifts": 1,
-      "fcp_ms": 761,
-      "lcp_ms": 1777,
-      "tbt_ms": 35,
-      "speed_index_ms": 896,
-      "note": "One tiny shift of the 'Launching 10 Dec' label in the price row when the Geist font loaded. The size grid did not move."
+      "cls": 0,
+      "layout_shifts": 0,
+      "fcp_ms": 850,
+      "lcp_ms": 1900,
+      "tbt_ms": 49,
+      "speed_index_ms": 850
+    },
+    {
+      "run": 4,
+      "score": 100,
+      "cls": 0,
+      "layout_shifts": 0,
+      "fcp_ms": 846,
+      "lcp_ms": 846,
+      "tbt_ms": 12,
+      "speed_index_ms": 1100
+    },
+    {
+      "run": 5,
+      "score": 100,
+      "cls": 0,
+      "layout_shifts": 0,
+      "fcp_ms": 860,
+      "lcp_ms": 860,
+      "tbt_ms": 37,
+      "speed_index_ms": 860
     }
   ],
   "budget_check": {
-    "performance_score_min": "pass (100, 100, 100 vs 90)",
-    "size_grid_shift_px_max": "pass for the size grid (it did not move in any run). Run 3 recorded a 0.00003 shift of the 'Launching 10 Dec' label when the font loaded.",
+    "performance_score_min": "pass (100 in all 5 runs vs 90)",
+    "size_grid_shift_px_max": "pass (layout shift exactly 0 in all 5 runs; no element shifted)",
     "size_button_min_px": "pass (smallest side 48px vs 44, measured in the browser at 375 wide)"
   },
-  "layout": "Latest version: Geist font, light mode only, disabled 'Add to bag' with 'Launching 10 Dec' in the price row, 'Road running shoe' under the name",
-  "full_report": "lighthouse-live-report.html (run 2, layout shift 0)",
+  "layout": "Latest version, with Geist loaded as display: optional so it never swaps in late",
+  "full_report": "lighthouse-live-report.html (run 1, layout shift 0)",
   "rows_above_sticky_bar": {
     "how": "Chrome phone-size window, not a real iPhone",
     "375x812": "4 full rows (12 sizes)",
     "375x667": "about 1 full row and most of a second (the bar starts at 587px)",
     "real_iphone_safari": "not measured"
-  }
+  },
+  "history": "An earlier set of 3 runs (before the font fix) had one run with a 0.00003 shift of the 'Launching 10 Dec' label when Geist loaded late. Fixed by loading Geist with display: optional."
 }

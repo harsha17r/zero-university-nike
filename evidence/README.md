@@ -2,21 +2,25 @@
 
 Live page: https://zero-university-nike.vercel.app
 
-Everything here was taken on 22 Nov 2026 from the latest version: Geist font, light mode only, a disabled grey "Add to bag" with "Launching 10 Dec" in the price row, and "Road running shoe" under the name.
+Everything here was taken on 22 Nov 2026 from the latest version (the screenshots just before the font fix, which does not change how the page looks): Geist font, light mode only, a disabled grey "Add to bag" with "Launching 10 Dec" in the price row, and "Road running shoe" under the name.
 
 ## Speed score
 
-Lighthouse, three runs on the live Vercel page, with the Slow 4G mobile settings in `lighthouse.config.json` (375 x 812 at 3x, 150 ms round trip, 1638.4 Kbps, 4x CPU slowdown).
+Lighthouse, five runs on the live Vercel page, with the Slow 4G mobile settings in `lighthouse.config.json` (375 x 812 at 3x, 150 ms round trip, 1638.4 Kbps, 4x CPU slowdown).
 
 | Run | Performance score | Layout shift | First paint | Largest paint |
 |---|---|---|---|---|
-| 1 | 100 | 0 | 828 ms | 828 ms |
-| 2 | 100 | 0 | 783 ms | 1533 ms |
-| 3 | 100 | 0.00003 | 761 ms | 1777 ms |
+| 1 | 100 | 0 | 803 ms | 1548 ms |
+| 2 | 100 | 0 | 782 ms | 1832 ms |
+| 3 | 100 | 0 | 850 ms | 1900 ms |
+| 4 | 100 | 0 | 846 ms | 846 ms |
+| 5 | 100 | 0 | 860 ms | 860 ms |
 
-Full Lighthouse report for run 2: `lighthouse-live-report.html` (open it in a browser) and `lighthouse-live-report.json`.
+Full Lighthouse report for run 1: `lighthouse-live-report.html` (open it in a browser) and `lighthouse-live-report.json`.
 
-Against `speed-budget.json`: score needs 90 or more (100), smallest size button 44px or more (48px), and the size grid must not move. The grid did not move in any run. One thing to know: run 3 recorded a tiny shift of 0.00003 on the "Launching 10 Dec" label in the price row, when the Geist font finished loading. It is not the size grid, and it did not happen in runs 1 and 2. Full numbers: `speed-score.json`.
+Against `speed-budget.json`: score needs 90 or more (100 in every run), smallest size button 44px or more (48px), and the size grid must not move. Nothing shifted in any run: the layout shift is exactly 0. Full numbers: `speed-score.json`.
+
+History: an earlier set of three runs, before a font fix, had one run with a tiny shift (0.00003) of the "Launching 10 Dec" label when the Geist font finished loading late. The fix was to load Geist with `display: "optional"`, so the font never swaps in late. Five of five runs since are clean. That is good evidence, not proof, because the shift only showed up in one of three runs before.
 
 ## Phone screenshots with a size tapped
 
