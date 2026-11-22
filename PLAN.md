@@ -1,6 +1,6 @@
 # Nike Shoe Page: 375px Mobile Plan
 
-Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold with a half-row peek above the sticky bar (gallery is 232px), and the sticky button says "Add to bag" for every size in stock. "Notify me" appears only on sold-out sizes. Open: Safari visible-height test. No code written yet.
+Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold with a half-row peek above the sticky bar (gallery is 232px), and the sticky button says "Add to bag" for every size in stock. Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. No code written yet.
 Design width: **375px** (iPhone SE/mini class, the smallest common phone). Anything that works here works on wider phones.
 
 ## Goal
@@ -33,7 +33,7 @@ Every accordion header is a fixed 56px. Content heights are fixed while collapse
 
 ## Size button rules
 - Every button is **at least 48 x 48px**, 8px gap. Meets and exceeds the 44px touch minimum.
-- **Sold-out sizes stay the same size.** They are dimmed with a diagonal strike-through, not removed or shrunk. Tapping one shows an inline "Notify me when available" line, so the tap is never wasted.
+- **Sold-out sizes stay the same size.** They are dimmed with a diagonal strike-through, not removed or shrunk. They are disabled, so tapping one does nothing.
 - Selected state: 2px black border plus a filled check, not colour alone.
 - Nothing scrolls sideways, and the grid is never a nested scroll area. It is one block of 26 buttons that scrolls with the page, so there is no pinching or hunting.
 - If no size is chosen and the user taps "Add to bag", the grid scrolls into view and shakes, with the message "Select a size".
@@ -65,7 +65,7 @@ Decision (Open decisions 5): the "Popular sizes" row was rejected because we hav
 - **They stay in place and never drop out.** M 3.5, M 10, M 15.5 and M 16 keep their `display_order` position. M 10 sits between two in-stock sizes, and moving it would break the runner's habit of finding her size by position. It would also shift the grid every time stock refreshes.
 - Same 48px height, same radius, same fill family as the other buttons. They are made quieter, not given a different style.
 - Look: text at about 40% opacity, a thin diagonal strike-through, no selected ring. The strike-through means sold out is not shown by colour alone.
-- They use `aria-disabled`, not `disabled`, so they can still be tapped. A tap shows "Notify me when M 10 is back" under the grid and does not select the size.
+- DECIDED (changed 22 Nov 2026): they use the real `disabled` attribute, so they can't be tapped or reached with the keyboard. Nothing happens on a tap: no selection and no message. Screen readers hear "sold out" from the button's label. The earlier "Notify me" line under the grid was removed.
 - Low-stock sizes look like normal buttons until selected.
 
 ## Layout rules (apply everywhere)
@@ -84,7 +84,7 @@ Checkout, account sign-in, wishlist, and desktop layout.
 3. **Size grid columns.** 4 columns x 3 rows is chosen. 3 columns would give wider buttons but a fourth row (+56px), which breaks the fold.
 4. **Sticky bar always, or only after scrolling past the sizes?** Plan says always.
 5. **26 sizes vs the fold. DECIDED: the grid continues below the fold with a half-row peek.** The sticky bar covers the bottom 72px, so the gallery shrinks from 264px to 232px to make room for the peek. Rejected: shrinking the gallery to about 130px so 5 rows fit (hurts the photos), and a "Popular sizes" row (needs sales data we do not have).
-6. **Sticky button label. DECIDED (changed 17 Nov 2026): "Add to bag" for every size in stock. "Notify me" only appears for a sold-out size.** Reason: showing "Notify me" next to sizes that are in stock was confusing. The stock feed lists a `launch_date` of 2026-12-10, which is still ahead. The built page ignores it for now. If the shoe really can't be bought before launch, the label rule needs to come back.
+6. **Sticky button label. DECIDED (changed 17 Nov 2026): "Add to bag" for every size in stock. There is no "Notify me" anywhere (sold-out sizes are disabled).** Reason: showing "Notify me" next to sizes that are in stock was confusing. The stock feed lists a `launch_date` of 2026-12-10, which is still ahead. The built page ignores it for now. If the shoe really can't be bought before launch, the label rule needs to come back.
 7. **OPEN: Safari visible-height test.** The 667px fold is the phone's full height. On a small iPhone in Safari the toolbars take space, and the visible area is probably around 550px. This is not measured. Test on a real device or the iOS Simulator before building, then redo the height budget if needed.
 
 ## Next step

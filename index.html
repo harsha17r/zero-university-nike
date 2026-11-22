@@ -172,13 +172,13 @@
     opacity: 0.42;
     background-image: linear-gradient(to top right, transparent calc(50% - 0.75px), var(--fg) calc(50% - 0.75px), var(--fg) calc(50% + 0.75px), transparent calc(50% + 0.75px));
   }
+  .size:disabled { cursor: not-allowed; color: var(--fg); }
   .size.soldout:active { transform: none; }
   .grid.shake { animation: shake 360ms ease-in-out; }
   @keyframes shake { 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
 
   .status { min-height: 52px; margin-top: 12px; }
   .status p { margin: 0; padding: 12px; border-radius: 8px; background: var(--note-bg); font-size: 14px; line-height: 20px; text-wrap: pretty; }
-  .status .inline-btn { margin-top: 8px; display: block; height: 44px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--fg); background: none; font-size: 14px; font-weight: 600; cursor: pointer; }
   .foot { padding-top: 24px; padding-bottom: calc(72px + 24px + env(safe-area-inset-bottom, 0px)); font-size: 12px; line-height: 16px; letter-spacing: 0.01em; color: var(--muted); text-wrap: pretty; }
   .foot a { color: inherit; }
 
@@ -293,7 +293,7 @@
 
 <script>
   // Pegasus 43, style HV7521-001. [men's US, women's US, EU, quantity]. Order = display_order.
-  // Quantity 0 = sold out (stays in its cell, greyed, offers "Notify me"). 1 to LOW_STOCK_MAX = low stock.
+  // Quantity 0 = sold out (stays in its cell, greyed, disabled). 1 to LOW_STOCK_MAX = low stock.
   var SIZES = [
     [3.5, 5, "35.5", 0], [4, 5.5, "36", 4], [4.5, 6, "36.5", 18], [5, 6.5, "37.5", 26],
     [5.5, 7, "38", 34], [6, 7.5, "38.5", 47], [6.5, 8, "39", 63], [7, 8.5, "40", 88],
@@ -327,7 +327,7 @@
     b.dataset.index = i;
     b.setAttribute("aria-pressed", "false");
     b.setAttribute("aria-label", name(s) + (qty === 0 ? ", sold out" : ""));
-    if (qty === 0) b.setAttribute("aria-disabled", "true");
+    if (qty === 0) b.disabled = true;
     b.innerHTML = '<span>M ' + s[0] + '</span><span class="w">W ' + s[1] + '</span>' + CHECK;
     li.appendChild(b);
     grid.appendChild(li);
@@ -338,21 +338,11 @@
     if (!b) return;
     var i = Number(b.dataset.index);
     var s = SIZES[i];
-    if (s[3] === 0) {
-      setStatus(name(s) + " is sold out." + '<button class="inline-btn" type="button" data-notify="' + i + '">Notify me when it’s back</button>');
-      return;
-    }
+    if (s[3] === 0) return; // sold-out buttons are disabled; this is only a safety net
     Array.prototype.forEach.call(grid.querySelectorAll(".size"), function (el) { el.setAttribute("aria-pressed", "false"); });
     b.setAttribute("aria-pressed", "true");
     selected = i;
     setStatus(s[3] <= LOW_STOCK_MAX ? "Only " + s[3] + " left in " + name(s) + "." : "");
-  });
-
-  statusEl.addEventListener("click", function (e) {
-    var n = e.target.closest("[data-notify]");
-    if (!n) return;
-    var s = SIZES[Number(n.dataset.notify)];
-    setStatus("Saved: we would tell you when " + name(s) + " is back. Prototype only, nothing is sent.");
   });
 
   cta.addEventListener("click", function () {
