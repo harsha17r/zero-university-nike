@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
 // One font family for the whole page.
-const inter = Inter({
-  variable: "--font-inter",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
   display: "swap",
 });
@@ -19,13 +19,14 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  colorScheme: "light", // light mode only
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // suppressHydrationWarning: browser extensions add attributes to <html> before React loads,
     // which causes a harmless hydration warning. This only affects the <html> element itself.
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang="en" className={geist.variable} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

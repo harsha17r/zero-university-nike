@@ -8,7 +8,7 @@ A runner opens the page and, without pinching and with at most a short scroll, s
 
 ## Tech stack
 - Next.js 16 (App Router) with React 19 and TypeScript. Plain CSS in `app/globals.css`, no UI library.
-- One font, Inter, loaded with `next/font`.
+- One font, Geist, loaded with `next/font`. Light mode only (no dark mode).
 - Size and stock data lives in `lib/sizes.ts` and mirrors PEGASUS-STOCK.md. The photo is `public/pegasus-photo.jpg`.
 - Run locally with `npm install` then `npm run dev`, and open http://localhost:3000. Check the page at 375px wide.
 - Components: `ShoeApp` (state), `Nav`, `SizeGrid`, `SizeGuide`.

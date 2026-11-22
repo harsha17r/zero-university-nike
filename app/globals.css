@@ -2,8 +2,8 @@
   Layout: one 480px column, generous spacing on an 8px rhythm. The first screen is no longer squeezed into a 667px fold.
   Fixed heights, so nothing moves while the page loads: nav 56, title 132, photo 220,
   size section 76 (32 above, 32 header, 12 below), size rows 48px, 16px between rows and 12px between columns, 3 columns, sticky bar 80.
-  Type: one family (Inter), four sizes: 24 / 16 / 14 / 12, on a 4px line-height rhythm.
-  Color: two base colors (--bg, --fg). Every grey is a mix of them, so all neutrals share one temperature.
+  Type: one family (Geist), four sizes: 24 / 16 / 14 / 12, on a 4px line-height rhythm.
+  Color: light mode only. Two base colors (--bg, --fg). Every grey is a mix of them, so all neutrals share one temperature.
 */
 :root {
   --bg: #ffffff;
@@ -14,16 +14,8 @@
   --btn-ring: color-mix(in oklab, var(--fg) 24%, transparent);
   --note-bg: color-mix(in oklab, var(--fg) 6%, transparent);
   --photo-bg: #f5f5f6;
-  --font: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font: var(--font-geist), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #111214;
-    --fg: #f3f4f5;
-    color-scheme: dark;
-  }
 }
 
 * {
