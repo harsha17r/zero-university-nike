@@ -1,7 +1,7 @@
 /*
-  Layout: one 480px column, spacing on an 8px rhythm (with a few 4px and 6px steps). Fixed-height stack on a 375 x 667 fold:
-  nav 56, title 106, photo 196, size section 60 (24 above, 32 header, 4 below), three rows of sizes 168
-  (48px rows, 12px gaps, 3 columns), sticky bar 72. That is 586px of content above the bar, which starts at 595px.
+  Layout: one 480px column, generous spacing on an 8px rhythm. The first screen is no longer squeezed into a 667px fold.
+  Fixed heights, so nothing moves while the page loads: nav 56, title 132, photo 220,
+  size section 76 (32 above, 32 header, 12 below), size rows 48px, 16px between rows and 12px between columns, 3 columns, sticky bar 80.
   Type: one family (Inter), four sizes: 24 / 16 / 14 / 12, on a 4px line-height rhythm.
   Color: two base colors (--bg, --fg). Every grey is a mix of them, so all neutrals share one temperature.
 */
@@ -150,15 +150,15 @@ button {
 }
 
 /*
-  2. Title block, 106px = 14 + 28 (name) + 20 (grey line) + 6 + 24 (price) + 14.
+  2. Title block, 132px = 24 + 28 (name) + 20 (grey line) + 12 + 24 (price) + 24.
   Price and colorway appear here once. Line height adds invisible space above and below the letters,
-  so the padding is tuned to the visible gaps: about 19px from the nav line to the top of the name,
-  and about 20px from the price to the photo.
+  so the padding is tuned to the visible gaps: about 29px from the nav line to the top of the name,
+  and about 30px from the price to the photo.
 */
 .title {
-  height: 106px;
-  padding-top: 14px;
-  padding-bottom: 14px;
+  height: 132px;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
 .meta {
@@ -183,7 +183,7 @@ button {
 }
 
 .price-row {
-  margin-top: 6px;
+  margin-top: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -215,11 +215,11 @@ button {
   stroke-linejoin: round;
 }
 
-/* 3. Photo box, 375 x 196, reserved before the image loads. */
+/* 3. Photo box, 375 x 220, reserved before the image loads. */
 .photo {
   position: relative;
   width: 100%;
-  aspect-ratio: 375 / 196;
+  aspect-ratio: 375 / 220;
   background: var(--photo-bg);
   overflow: hidden;
 }
@@ -242,14 +242,14 @@ button {
   }
 }
 
-/* 4. Size selector: 24px of air under the photo, 32px header, 4px before the grid. */
+/* 4. Size selector: 32px of air under the photo, 32px header, 12px before the grid. */
 .size-section {
-  padding-top: 24px;
+  padding-top: 32px;
 }
 
 .size-head {
   height: 32px;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -278,7 +278,7 @@ button {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-auto-rows: 48px;
-  gap: 12px;
+  gap: 16px 12px; /* 16px between rows, 12px between columns: keeps the widest label from touching its border */
   margin: 0;
   padding: 0;
   list-style: none;
@@ -352,7 +352,7 @@ button {
 
 .status {
   min-height: 52px;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .status p {
@@ -366,8 +366,8 @@ button {
 }
 
 .foot {
-  padding-top: 24px;
-  padding-bottom: calc(72px + 24px + env(safe-area-inset-bottom, 0px));
+  padding-top: 32px;
+  padding-bottom: calc(80px + 32px + env(safe-area-inset-bottom, 0px));
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.01em;
@@ -379,7 +379,7 @@ button {
   color: inherit;
 }
 
-/* 5. Sticky bar, 72px */
+/* 5. Sticky bar, 80px = 16 + 48 (button) + 16 */
 .bar {
   position: fixed;
   left: 0;
@@ -388,8 +388,8 @@ button {
   max-width: 480px;
   margin: 0 auto;
   z-index: 20;
-  height: calc(72px + env(safe-area-inset-bottom, 0px));
-  padding-top: 12px;
+  height: calc(80px + env(safe-area-inset-bottom, 0px));
+  padding-top: 16px;
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: var(--bg);
   border-top: 1px solid var(--line);
