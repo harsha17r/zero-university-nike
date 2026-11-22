@@ -1,0 +1,56 @@
+{
+  "url": "https://zero-university-nike.vercel.app/",
+  "measured_at": "2026-11-22T21:33Z",
+  "tool": "Lighthouse 13.6.0 (CLI), performance category only",
+  "settings_file": "lighthouse.config.json (from the Slow 4G mobile check profile)",
+  "settings": {
+    "formFactor": "mobile",
+    "throttlingMethod": "simulate",
+    "viewport": "375 x 812 CSS px at 3x",
+    "rttMs": 150,
+    "throughputKbps": 1638.4,
+    "cpuSlowdownMultiplier": 4
+  },
+  "budget": {
+    "performance_score_min": 90,
+    "size_grid_shift_px_max": 0,
+    "size_button_min_px": 44
+  },
+  "runs": [
+    {
+      "run": 1,
+      "score": 100,
+      "cls": 0,
+      "layout_shifts": 0,
+      "fcp_ms": 782,
+      "lcp_ms": 1903,
+      "tbt_ms": 27,
+      "speed_index_ms": 782
+    },
+    {
+      "run": 2,
+      "score": 100,
+      "cls": 0,
+      "layout_shifts": 0,
+      "fcp_ms": 779,
+      "lcp_ms": 1679,
+      "tbt_ms": 4,
+      "speed_index_ms": 779
+    },
+    {
+      "run": 3,
+      "score": 100,
+      "cls": 0,
+      "layout_shifts": 0,
+      "fcp_ms": 783,
+      "lcp_ms": 783,
+      "tbt_ms": 7,
+      "speed_index_ms": 783
+    }
+  ],
+  "budget_check": {
+    "performance_score_min": "pass (100, 100, 100 vs 90)",
+    "size_grid_shift_px_max": "pass (layout shift 0 in all runs vs 0)",
+    "size_button_min_px": "pass (smallest side 48px vs 44, measured in the browser at 375 wide)"
+  }
+}

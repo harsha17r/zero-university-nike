@@ -32,3 +32,4 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 | Write the phone page plan | `PLAN-PROMPT.md` |
 | Build the shoe page in Next.js | `BUILD-PROMPT.md` |
 | Keep the size grid still on a slow phone | `TRACE-PROMPT.md` |
+| Put the page live on Vercel | `DEPLOY-PROMPT.md` |
