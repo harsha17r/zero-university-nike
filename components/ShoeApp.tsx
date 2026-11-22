@@ -75,7 +75,7 @@ export default function ShoeApp() {
           />
         </div>
 
-        <section className="gutter" aria-label="Size selector" ref={sizesRef}>
+        <section className="gutter size-section" aria-label="Size selector" ref={sizesRef}>
           <div className="size-head">
             <h2 id="size-label">Select size</h2>
             <button className="link-btn" type="button" onClick={() => setGuideOpen(true)}>
