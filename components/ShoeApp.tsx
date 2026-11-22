@@ -7,7 +7,7 @@ import SizeGrid from "./SizeGrid";
 import SizeGuide from "./SizeGuide";
 import { SIZES, isLowStock, sizeName } from "@/lib/sizes";
 
-// Top of the page, in order: nav bar, title block (colorway, name, price), photo, size grid.
+// Top of the page, in order: nav bar, title block (name, grey colorway line, price), photo, size grid.
 // The sticky "Add to bag" bar stays pinned to the bottom.
 export default function ShoeApp() {
   const [selected, setSelected] = useState<number | null>(null);
@@ -50,8 +50,8 @@ export default function ShoeApp() {
 
       <main>
         <section className="title gutter" aria-label="Product">
-          <p className="meta">Road running shoe · Black/White-Volt</p>
           <h1>Nike Pegasus 43</h1>
+          <p className="meta">Road running shoe · Black/White-Volt</p>
           <div className="price-row">
             <span className="price">$140</span>
             <span className="reviews">

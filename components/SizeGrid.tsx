@@ -5,33 +5,25 @@ type SizeGridProps = {
   onSelect: (index: number) => void;
 };
 
-// All 26 sizes in display order. Sold-out sizes keep their cell and are disabled,
+// All 26 sizes in display order, 3 columns. One-line label, men's and women's at the same
+// size and weight, like Nike: "M 10.5 / W 12". Sold-out sizes keep their cell and are disabled,
 // so nothing shifts and they cannot be tapped or focused.
 export default function SizeGrid({ selected, onSelect }: SizeGridProps) {
   return (
     <ul className="grid" aria-labelledby="size-label">
       {SIZES.map((size, i) => {
         const soldOut = isSoldOut(size);
-        const isSelected = selected === i;
         return (
           <li key={size.men}>
             <button
               type="button"
               className="size"
-              aria-pressed={isSelected}
+              aria-pressed={selected === i}
               aria-label={`${sizeName(size)}${soldOut ? ", sold out" : ""}`}
               disabled={soldOut}
               onClick={() => onSelect(i)}
             >
-              <span>M {size.men}</span>
-              <span className="w">W {size.women}</span>
-              {isSelected && (
-                <span className="check" aria-hidden="true">
-                  <svg viewBox="0 0 14 14">
-                    <path d="M3.8 7.2l2.2 2.2 4.2-4.4" />
-                  </svg>
-                </span>
-              )}
+              <span>{sizeName(size)}</span>
             </button>
           </li>
         );
