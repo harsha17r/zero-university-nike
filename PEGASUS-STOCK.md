@@ -57,4 +57,4 @@ SKU on each row = `HV7521-001-` + the 3-digit suffix below.
 - Never show raw quantities for in-stock sizes. Show "Only N left" only when a low-stock size is selected.
 - Sold-out sizes sit between in-stock sizes, so they keep their grid position and are disabled.
 - This replaces the earlier list (17 November 2026), which had 17 in stock, 5 low stock and 4 sold out. The page now reads the 8 December list.
-- `launch_date` is 2026-12-10. The page uses it: before that date the sticky button is disabled and says "Available 10 December"; from that date it says "Add to bag".
+- `launch_date` is 2026-12-10. The page uses it: before that date the sticky button is disabled and says "Launching 10 December"; from that date it says "Add to bag".

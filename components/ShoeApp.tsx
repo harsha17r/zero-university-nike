@@ -6,11 +6,11 @@ import Nav from "./Nav";
 import SizeGrid from "./SizeGrid";
 import SizeGuide from "./SizeGuide";
 import { LAUNCH_DATE, SIZES, isLowStock, sizeName } from "@/lib/sizes";
-import { hasLaunched, longLaunch, shortLaunch } from "@/lib/launch";
+import { hasLaunched, longLaunch } from "@/lib/launch";
 
 // Top of the page, in order: nav bar, title block (name, grey colorway line, price), photo, size grid.
 // The sticky bar stays pinned to the bottom. Before the launch date from the stock feed it is disabled
-// and says "Available 10 December"; from the launch date on it says "Add to bag".
+// and says "Launching 10 December"; from the launch date on it says "Add to bag".
 export default function ShoeApp() {
   const [selected, setSelected] = useState<number | null>(null);
   const [bag, setBag] = useState(0);
@@ -61,26 +61,14 @@ export default function ShoeApp() {
       <main>
         <section className="title gutter" aria-label="Product">
           <h1>Nike Pegasus 43</h1>
-          <p className="meta">Road running shoe · Black/White-Volt</p>
+          <p className="meta">Black/White-Volt</p>
           <div className="price-row">
             <span className="price" data-testid="price">$140</span>
-            <span className="reviews" data-testid="launch-note">
-              {launched ? (
-                <>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9L3.5 9.7l5.9-.8L12 3.5z" />
-                  </svg>
-                  No reviews yet
-                </>
-              ) : (
-                <>
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <rect x="4" y="5.5" width="16" height="14" rx="2" />
-                    <path d="M4 10h16M8 3.5v4M16 3.5v4" />
-                  </svg>
-                  Launches {shortLaunch(LAUNCH_DATE)}
-                </>
-              )}
+            <span className="reviews">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9L3.5 9.7l5.9-.8L12 3.5z" />
+              </svg>
+              No ratings yet
             </span>
           </div>
         </section>
@@ -121,7 +109,7 @@ export default function ShoeApp() {
 
       <div className="bar gutter">
         <button className="cta" type="button" onClick={handleAddToBag} disabled={!launched}>
-          {launched ? "Add to bag" : `Available ${longLaunch(LAUNCH_DATE)}`}
+          {launched ? "Add to bag" : `Launching ${longLaunch(LAUNCH_DATE)}`}
         </button>
       </div>
 

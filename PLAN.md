@@ -1,6 +1,6 @@
 # Nike Shoe Page: 375px Mobile Plan
 
-Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold and the first screen is no longer squeezed into 667px: generous spacing (24px around the title, 32px under the photo, 16px between size rows) and a 220px photo, and the page uses the launch date from the stock feed: before 10 December 2026 the sticky button is disabled and says "Available 10 December", and from that date it says "Add to bag". Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
+Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold and the first screen is no longer squeezed into 667px: generous spacing (24px around the title, 32px under the photo, 16px between size rows) and a 220px photo, and the page uses the launch date from the stock feed: before 10 December 2026 the sticky button is disabled and says "Launching 10 December", and from that date it says "Add to bag". Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
 Design width: **375px** (iPhone SE/mini class, the smallest common phone). Anything that works here works on wider phones.
 
 ## Goal
@@ -20,10 +20,10 @@ Fold target: **375 x 667**. Taller phones (812+) just show more of the content b
 | # | Part | Height | Why it sits here |
 |---|------|--------|------------------|
 | 1 | Top nav bar | 56px | Back arrow, search, bag, menu. No brand logo. Each icon is a 44x44 tap target. Sticky. |
-| 2 | Title block | 132px | Shoe name (28), grey colorway line (20) and price (24) with "No reviews yet" on the same row, 12px between the grey line and the price, and 24px above and below. Price and colorway show once, here, above the photo. |
+| 2 | Title block | 132px | Shoe name (28), grey colorway line (20) and price (24) with "No ratings yet" on the same row, 12px between the grey line and the price, and 24px above and below. Price and colorway show once, here, above the photo. The grey line is the colorway name from the feed, "Black/White-Volt", as plain text. |
 | 3 | Photo | 220px (375 wide) | One photo for now, in a fixed box so nothing jumps when it loads. No carousel yet, so no dots. |
 | 4 | Size selector | 76px + grid | 32px of air under the photo, a 32px label row "Select size / Size guide", 12px, then a 3-column grid: rows of 48px buttons, 16px between rows and 12px between columns (all 9 rows: 560px). The Pegasus has 26 sizes, so the grid continues below the first screen, see Stock data. |
-| 5 | Sticky bar | 80px | Pinned to the bottom, always reachable by thumb. Full-width 48px button with 16px padding above and below. Before the launch date (10 December 2026, from the stock feed) it is disabled and says "Available 10 December"; from that date it says "Add to bag". |
+| 5 | Sticky bar | 80px | Pinned to the bottom, always reachable by thumb. Full-width 48px button with 16px padding above and below. Before the launch date (10 December 2026, from the stock feed) it is disabled and says "Launching 10 December"; from that date it says "Add to bag". |
 
 Total above the grid: 56 + 132 + 220 + 76 = **484px**. On a 375 x 667 phone that leaves room for one full row of sizes and most of a second above the sticky bar (which starts at 587px); on a 375 x 812 phone, about four rows. This is a change from the earlier plan, which squeezed the first screen into 664px. The owner chose generous spacing over fitting the fold (22 Nov 2026). Every part still has a fixed height, so nothing moves while the page loads. (History: the photo was 264px, 232px, 220px, 196px, then 220px again.)
 
@@ -45,7 +45,7 @@ Every accordion header is a fixed 56px. Content heights are fixed while collapse
 - If no size is chosen and the user taps "Add to bag", the grid scrolls into view and shakes, with the message "Select a size".
 
 ## Stock data
-Real size list: [PEGASUS-STOCK.md](PEGASUS-STOCK.md) (Nike Pegasus 43, Black/White-Volt, $140). 26 sizes (M 3.5 to M 16): 17 in stock, 5 low stock, 4 sold out.
+Real size list: [PEGASUS-STOCK.md](PEGASUS-STOCK.md) (Nike Pegasus 43, Black/White-Volt, $140). 26 sizes (M 3.5 to M 16), from the 8 December 2026 list: 10 in stock, 7 low stock, 9 sold out.
 
 What the data changes in this plan:
 - **Button label is one line**, "M 10.5 / W 12", with the men's and women's size in the same size (14px) and weight, like Nike's app and website. The widest label is about 96px and fits in a 109px button. EU size appears in the size guide, not on the button.
@@ -90,7 +90,7 @@ Checkout, account sign-in, wishlist, and desktop layout.
 3. **Size grid columns. DECIDED (changed 22 Nov 2026): 3 columns, one-line label.** A two-line label made the women's size small and muted, which looked wrong. Nike shows "M 6 / W 7.5" on one line at one size. That label needs about 96px, so 3 columns (109px each) fit it and 4 columns (80px) do not. The cost: the first screen shows 9 sizes instead of 12, and the full grid is 496px instead of 384px.
 4. **Sticky bar always, or only after scrolling past the sizes?** Plan says always.
 5. **26 sizes vs the fold. DECIDED: the grid continues below the fold.** The sticky bar covers the bottom 72px. The half-row peek was dropped, and the first screen no longer has to fit 667px (22 Nov 2026): spacing is generous, so the first screen shows about one and a half rows. Rejected: shrinking the gallery to about 130px so 5 rows fit (hurts the photos), and a "Popular sizes" row (needs sales data we do not have).
-6. **Sticky button and launch date. DECIDED (22 Nov 2026): the page uses `launch_date` from the stock feed (2026-12-10).** Before that date the sticky button is disabled and says "Available 10 December", and the price row says "Launches 10 Dec" in place of "No reviews yet". From midnight on 10 December (the viewer's local time) the button says "Add to bag" and the price row goes back to "No reviews yet". There is no "Notify me" anywhere: it was confusing next to sizes in stock, so the pre-launch state is a plain disabled button. Sizes can still be looked at and selected before launch. Changed from the earlier rule ("Add to bag" for every size in stock).
+6. **Sticky button and launch date. DECIDED (22 Nov 2026): the page uses `launch_date` from the stock feed (2026-12-10).** Before that date the sticky button is disabled and says "Launching 10 December". The price row always says "No ratings yet", so the date is said once, on the button. From midnight on 10 December (the viewer's local time) the button says "Add to bag". There is no "Notify me" anywhere: it was confusing next to sizes in stock, so the pre-launch state is a plain disabled button. Sizes can still be looked at and selected before launch. Changed from the earlier rule ("Add to bag" for every size in stock). Wording chosen by the owner (22 Nov 2026): "Launching 10 December" on the button, "No ratings yet" in the price row. Grey line under the name: "Black/White-Volt" as plain text, the colorway name exactly as in the feed. "Road running shoe" was dropped because it was not in the stock list. Colour dots were rejected because three dots look like a colour picker, and there is only one colorway, so there is nothing to choose.
 7. **OPEN: Safari visible-height test.** The 667px fold is the phone's full height. On a small iPhone in Safari the toolbars take space, and the visible area is probably around 550px. This is not measured. Test on a real device or the iOS Simulator before building, then redo the height budget if needed.
 
 ## Next step
