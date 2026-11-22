@@ -53,7 +53,7 @@ export default function ShoeApp() {
           <h1>Nike Pegasus 43</h1>
           <p className="meta">Road running shoe · Black/White-Volt</p>
           <div className="price-row">
-            <span className="price">$140</span>
+            <span className="price" data-testid="price">$140</span>
             <span className="reviews">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9 6.8 19.7l1-5.9L3.5 9.7l5.9-.8L12 3.5z" />
@@ -66,6 +66,7 @@ export default function ShoeApp() {
         <div className="photo">
           <Image
             src="/pegasus-photo.jpg"
+            data-testid="main-photo"
             alt="Black running shoe with volt-yellow accents, side view, floating against a white background"
             width={900}
             height={557}

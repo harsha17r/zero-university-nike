@@ -10,7 +10,7 @@ type SizeGridProps = {
 // so nothing shifts and they cannot be tapped or focused.
 export default function SizeGrid({ selected, onSelect }: SizeGridProps) {
   return (
-    <ul className="grid" aria-labelledby="size-label">
+    <ul className="grid" aria-labelledby="size-label" data-testid="size-grid">
       {SIZES.map((size, i) => {
         const soldOut = isSoldOut(size);
         return (
@@ -18,6 +18,7 @@ export default function SizeGrid({ selected, onSelect }: SizeGridProps) {
             <button
               type="button"
               className="size"
+              data-testid={soldOut ? "size-button-sold-out" : "size-button"}
               aria-pressed={selected === i}
               aria-label={`${sizeName(size)}${soldOut ? ", sold out" : ""}`}
               disabled={soldOut}
