@@ -23,7 +23,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={inter.variable}>
+    // suppressHydrationWarning: browser extensions add attributes to <html> before React loads,
+    // which causes a harmless hydration warning. This only affects the <html> element itself.
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

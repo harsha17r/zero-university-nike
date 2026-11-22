@@ -1,6 +1,6 @@
 # Nike Shoe Page: 375px Mobile Plan
 
-Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold with a half-row peek above the sticky bar (gallery is 232px), and the sticky button says "Add to bag" for every size in stock. Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
+Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold with a half-row peek above the sticky bar (photo is 220px), and the sticky button says "Add to bag" for every size in stock. Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
 Design width: **375px** (iPhone SE/mini class, the smallest common phone). Anything that works here works on wider phones.
 
 ## Goal
@@ -20,13 +20,13 @@ Fold target: **375 x 667**. Taller phones (812+) just show more of the content b
 | # | Part | Height | Why it sits here |
 |---|------|--------|------------------|
 | 1 | Top nav bar | 56px | Back arrow, search, bag, menu. No brand logo. Each icon is a 44x44 tap target. Sticky. |
-| 2 | Title block | 80px | Colorway line (16), shoe name (28), price (24) with "No reviews yet" on the same row. Price and colorway show once, here, above the photo. |
-| 3 | Photo | 232px (375 wide) | One photo for now, in a fixed box so nothing jumps when it loads. No carousel yet, so no dots. |
+| 2 | Title block | 92px | Shoe name (28), grey colorway line (20) and price (24) with "No reviews yet" on the same row, plus 10px above and below. Price and colorway show once, here, above the photo. |
+| 3 | Photo | 220px (375 wide) | One photo for now, in a fixed box so nothing jumps when it loads. No carousel yet, so no dots. |
 | 4 | Size selector | 192px | Label row "Select size / Size guide" 32px, then a 3-column grid, 3 rows of 48px buttons with 8px gaps (160px). Shows 9 sizes; the Pegasus has 26 and the grid continues below, see Stock data. |
 | 4b | Half-row peek | 32px | 8px gap plus the top 24px of the fourth row of sizes, so the grid visibly continues. Sits just above the sticky bar. |
 | 5 | Sticky bar | 72px | Pinned to the bottom, always reachable by thumb. Full-width 48px button with 12px padding. Says "Add to bag" for sizes in stock. |
 
-Total: 56 + 232 + 80 + 192 + 32 + 72 = **664px**, inside the 667 fold with 3px spare. Any added element must remove another. (The gallery was 264px before the peek was added. An earlier note said 236px, which was 1px too tall once the 8px gap is counted.)
+Total: 56 + 92 + 220 + 192 + 32 + 72 = **664px**, inside the 667 fold with 3px spare. Any added element must remove another. (The photo was 264px before the peek was added, then 232px, then 220px when the title block got 12px more room, from 80px to 92px, so the top is not cramped.)
 
 ## Below the fold (scroll order)
 1. **Colorways**: swatch row, 72px. Kept below the fold to protect the size grid. Open question below.
@@ -60,12 +60,12 @@ The fold plan has room for 3 rows. With 26 sizes in 3 columns the grid is 9 rows
 Decision (Open decisions 5): the "Popular sizes" row was rejected because we have no sales data. Keep the 3x3 block in the fold and let the grid run on below it as normal page scroll, with a visible half-row at the fold edge so it reads as continuing. The sticky Add to bag bar stays on screen the whole time, so the shopper never loses the button while scrolling to their size.
 
 ## Photo box (keeps the sizes still when the photo loads late)
-- The gallery is a fixed box, 375 x 232, reserved before any image arrives. It uses `aspect-ratio: 375 / 232` with a width and height set on the image, so the browser holds the space.
+- The gallery is a fixed box, 375 x 220, reserved before any image arrives. It uses `aspect-ratio: 375 / 220` with a width and height set on the image, so the browser holds the space.
 - The box has a flat light-grey background that matches the photo background. A late photo fades in with opacity only. It never changes the box size, so nothing below it moves.
 - Photos use `object-fit: contain` with a little padding, so the toe and heel are never cropped.
 - The first photo is preloaded with high fetch priority. Later photos load lazily, but their slides are the same fixed box.
 - The dots sit over the image (absolute), so they cost no height.
-- Everything under the photo has a fixed height too (80px title block, 32px size header, 48px buttons), so the size grid never shifts.
+- Everything under the photo has a fixed height too (92px title block, 32px size header, 48px buttons), so the size grid never shifts.
 - The size grid renders all 26 buttons from the stock list at once. If stock is slow, buttons show a neutral state, not a missing state.
 
 ## Sold-out sizes
@@ -90,7 +90,7 @@ Checkout, account sign-in, wishlist, and desktop layout.
 2. **Fold height.** Plan assumes 667. If analytics show most traffic on 812+ phones, the gallery can grow to about 400px.
 3. **Size grid columns. DECIDED (changed 22 Nov 2026): 3 columns, one-line label.** A two-line label made the women's size small and muted, which looked wrong. Nike shows "M 6 / W 7.5" on one line at one size. That label needs about 96px, so 3 columns (109px each) fit it and 4 columns (80px) do not. The cost: the first screen shows 9 sizes instead of 12, and the full grid is 496px instead of 384px.
 4. **Sticky bar always, or only after scrolling past the sizes?** Plan says always.
-5. **26 sizes vs the fold. DECIDED: the grid continues below the fold with a half-row peek.** The sticky bar covers the bottom 72px, so the gallery shrinks from 264px to 232px to make room for the peek. Rejected: shrinking the gallery to about 130px so 5 rows fit (hurts the photos), and a "Popular sizes" row (needs sales data we do not have).
+5. **26 sizes vs the fold. DECIDED: the grid continues below the fold with a half-row peek.** The sticky bar covers the bottom 72px, so the gallery shrinks from 264px to 220px to make room for the peek. Rejected: shrinking the gallery to about 130px so 5 rows fit (hurts the photos), and a "Popular sizes" row (needs sales data we do not have).
 6. **Sticky button label. DECIDED (changed 17 Nov 2026): "Add to bag" for every size in stock. There is no "Notify me" anywhere (sold-out sizes are disabled).** Reason: showing "Notify me" next to sizes that are in stock was confusing. The stock feed lists a `launch_date` of 2026-12-10, which is still ahead. The built page ignores it for now. If the shoe really can't be bought before launch, the label rule needs to come back.
 7. **OPEN: Safari visible-height test.** The 667px fold is the phone's full height. On a small iPhone in Safari the toolbars take space, and the visible area is probably around 550px. This is not measured. Test on a real device or the iOS Simulator before building, then redo the height budget if needed.
 

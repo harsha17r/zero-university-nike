@@ -1,6 +1,6 @@
 /*
   Layout: one 480px column. Fixed-height stack on a 375 x 667 fold:
-  nav 56, title 80, photo 232, size header 32, three rows of sizes 160 (48px rows, 8px gaps, 3 columns),
+  nav 56, title 92, photo 220, size header 32, three rows of sizes 160 (48px rows, 8px gaps, 3 columns),
   half-row peek 32, sticky bar 72 = 664px.
   Type: one family (Inter), four sizes: 24 / 16 / 14 / 12, on a 4px line-height rhythm.
   Color: two base colors (--bg, --fg). Every grey is a mix of them, so all neutrals share one temperature.
@@ -149,18 +149,23 @@ button {
   text-align: center;
 }
 
-/* 2. Title block, 80px = 5 + 28 (name) + 18 (grey line) + 24 (price) + 5. Price and colorway appear here once. */
+/*
+  2. Title block, 92px = 10 + 28 (name) + 20 (grey line) + 24 (price) + 10.
+  Price and colorway appear here once. Line height adds invisible space above and below the letters,
+  so the padding is tuned to the visible gaps: about 15px from the nav line to the top of the name,
+  and about 16px from the price to the photo. The gaps between the three lines are about 10px.
+*/
 .title {
-  height: 80px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  height: 92px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .meta {
-  height: 18px;
+  height: 20px;
   margin: 0;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -209,11 +214,11 @@ button {
   stroke-linejoin: round;
 }
 
-/* 3. Photo box, 375 x 232, reserved before the image loads. */
+/* 3. Photo box, 375 x 220, reserved before the image loads. */
 .photo {
   position: relative;
   width: 100%;
-  aspect-ratio: 375 / 232;
+  aspect-ratio: 375 / 220;
   background: var(--photo-bg);
   overflow: hidden;
 }
