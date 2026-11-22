@@ -12,6 +12,8 @@ Lighthouse, three runs on the live Vercel page, with the Slow 4G mobile settings
 | 2 | 100 | 0 | 779 ms | 1679 ms |
 | 3 | 100 | 0 | 783 ms | 783 ms |
 
+Full Lighthouse report from a fourth run on the live page (score 100, layout shift 0): `lighthouse-live-report.html` (open it in a browser) and `lighthouse-live-report.json`.
+
 Against `speed-budget.json`: score needs 90 or more (100), grid movement 0 (layout shift 0 in all runs), smallest size button 44px or more (48px). All pass. Full numbers: `speed-score.json`.
 
 ## Phone screenshots with a size tapped

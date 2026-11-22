@@ -10,7 +10,7 @@ A mobile-first product page for the Nike Pegasus 43 at 375px wide, with a 26-siz
 - `PLAN-PROMPT.md`: the prompt for writing the plan.
 - `TRACE-PROMPT.md`: the prompt for the slow-phone speed check, plus `speed-budget.json` and `lighthouse.config.json`.
 - `DEPLOY-PROMPT.md`: the prompt for putting the page live on Vercel, with the speed score and screenshots.
-- `evidence/`: the phone screenshots (a size tapped) and the speed score from the live page.
+- `evidence/`: the full Lighthouse report for the live page (`lighthouse-live-report.html`), the speed score summary, and the phone screenshots with a size tapped. Notes are in `evidence/README.md`.
 - `data/stock-2026-12-08.json`: the 8 December 2026 stock list the page reads.
 - `RULE.md`: the repo rules. Every stage's prompt is saved here as its own file.
 
