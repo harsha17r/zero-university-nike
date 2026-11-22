@@ -5,6 +5,9 @@ A mobile-first product page for the Nike Pegasus 43 at 375px wide, with a 26-siz
 - `PLAN.md`: the page plan (fold order, fixed heights, rules, decisions).
 - `PEGASUS-STOCK.md`: the size and stock list the grid is built from.
 - `BUILD-PROMPT.md`: the prompt for building the page with Claude Code.
+- `PLAN-PROMPT.md`: the prompt for writing the plan.
+- `TRACE-PROMPT.md`: the prompt for the slow-phone speed check, plus `speed-budget.json` and `lighthouse.config.json`.
+- `RULE.md`: the repo rules. Every stage's prompt is saved here as its own file.
 
 ## Run it
 
