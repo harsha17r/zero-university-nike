@@ -1,10 +1,17 @@
 # Nike Shoe Page: 375px Mobile Plan
 
-Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold with a half-row peek above the sticky bar (gallery is 232px), and the sticky button says "Add to bag" for every size in stock. Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. No code written yet.
+Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold with a half-row peek above the sticky bar (gallery is 232px), and the sticky button says "Add to bag" for every size in stock. Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
 Design width: **375px** (iPhone SE/mini class, the smallest common phone). Anything that works here works on wider phones.
 
 ## Goal
 A runner opens the page and, without pinching and with at most a short scroll, sees the shoe, the price and their size, and can add to bag. This is a mobile-first layout, not the desktop page squeezed down.
+
+## Tech stack
+- Next.js 16 (App Router) with React 19 and TypeScript. Plain CSS in `app/globals.css`, no UI library.
+- One font, Inter, loaded with `next/font`.
+- Size and stock data lives in `lib/sizes.ts` and mirrors PEGASUS-STOCK.md. The photo is `public/pegasus-photo.jpg`.
+- Run locally with `npm install` then `npm run dev`, and open http://localhost:3000. Check the page at 375px wide.
+- Components: `ShoeApp` (state), `Nav`, `SizeGrid`, `SizeGuide`.
 
 ## First-fold order (top to bottom)
 
@@ -12,9 +19,9 @@ Fold target: **375 x 667**. Taller phones (812+) just show more of the content b
 
 | # | Part | Height | Why it sits here |
 |---|------|--------|------------------|
-| 1 | Top nav bar | 56px | Logo, search, bag, menu. Each icon is a 44x44 tap target. Sticky. |
-| 2 | Photo gallery | 232px (375 wide) | The shoe sells itself. Swipe left/right, dot indicator overlaid on the image so it costs no height. |
-| 3 | Title + price + rating | 80px | Category (16), shoe name (28), price (24) with star rating and review count on the same row. Rating taps to jump to reviews. |
+| 1 | Top nav bar | 56px | Back arrow, search, bag, menu. No brand logo. Each icon is a 44x44 tap target. Sticky. |
+| 2 | Title block | 80px | Colorway line (16), shoe name (28), price (24) with "No reviews yet" on the same row. Price and colorway show once, here, above the photo. |
+| 3 | Photo | 232px (375 wide) | One photo for now, in a fixed box so nothing jumps when it loads. No carousel yet, so no dots. |
 | 4 | Size selector | 192px | Label row "Select size / Size guide" 32px, then a 4-column grid, 3 rows of 48px buttons with 8px gaps (160px). Shows 12 sizes; the Pegasus has 26 and the grid continues below, see Stock data. |
 | 4b | Half-row peek | 32px | 8px gap plus the top 24px of the fourth row of sizes, so the grid visibly continues. Sits just above the sticky bar. |
 | 5 | Sticky bar | 72px | Pinned to the bottom, always reachable by thumb. Full-width 48px button with 12px padding. Says "Add to bag" for sizes in stock. |
@@ -33,7 +40,7 @@ Every accordion header is a fixed 56px. Content heights are fixed while collapse
 
 ## Size button rules
 - Every button is **at least 48 x 48px**, 8px gap. Meets and exceeds the 44px touch minimum.
-- **Sold-out sizes stay the same size.** They are dimmed with a diagonal strike-through, not removed or shrunk. They are disabled, so tapping one does nothing.
+- **Sold-out sizes stay the same size.** They are dimmed, with a line through the text, not removed or shrunk. They are disabled, so tapping one does nothing.
 - Selected state: 2px black border plus a filled check, not colour alone.
 - Nothing scrolls sideways, and the grid is never a nested scroll area. It is one block of 26 buttons that scrolls with the page, so there is no pinching or hunting.
 - If no size is chosen and the user taps "Add to bag", the grid scrolls into view and shakes, with the message "Select a size".
@@ -64,7 +71,7 @@ Decision (Open decisions 5): the "Popular sizes" row was rejected because we hav
 ## Sold-out sizes
 - **They stay in place and never drop out.** M 3.5, M 10, M 15.5 and M 16 keep their `display_order` position. M 10 sits between two in-stock sizes, and moving it would break the runner's habit of finding her size by position. It would also shift the grid every time stock refreshes.
 - Same 48px height, same radius, same fill family as the other buttons. They are made quieter, not given a different style.
-- Look: text at about 40% opacity, a thin diagonal strike-through, no selected ring. The strike-through means sold out is not shown by colour alone.
+- Look: text at about 40% opacity, a thin line through the text only (not across the button), no selected ring. The strike-through means sold out is not shown by colour alone.
 - DECIDED (changed 22 Nov 2026): they use the real `disabled` attribute, so they can't be tapped or reached with the keyboard. Nothing happens on a tap: no selection and no message. Screen readers hear "sold out" from the button's label. The earlier "Notify me" line under the grid was removed.
 - Low-stock sizes look like normal buttons until selected.
 

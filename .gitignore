@@ -3,3 +3,10 @@
 Nike Pegasus 43 375px Mobile Page Plan.pdf
 Nike-Pegasus-43-Mobile-Plan.docx
 PLAN-for-google-docs.html
+
+# Next.js
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.env*
