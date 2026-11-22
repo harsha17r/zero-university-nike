@@ -1,6 +1,6 @@
 {
   "url": "https://zero-university-nike.vercel.app/",
-  "measured_at": "2026-11-22T21:48Z",
+  "measured_at": "2026-11-22T21:53Z",
   "tool": "Lighthouse 13.6.0 (CLI), performance category only",
   "settings_file": "lighthouse.config.json (from the Slow 4G mobile check profile)",
   "settings": {
@@ -22,37 +22,37 @@
       "score": 100,
       "cls": 0,
       "layout_shifts": 0,
-      "fcp_ms": 836,
-      "lcp_ms": 836,
-      "tbt_ms": 11,
-      "speed_index_ms": 1004
+      "fcp_ms": 873,
+      "lcp_ms": 873,
+      "tbt_ms": 31,
+      "speed_index_ms": 1006
     },
     {
       "run": 2,
-      "score": 100,
+      "score": 99,
       "cls": 0,
       "layout_shifts": 0,
-      "fcp_ms": 781,
-      "lcp_ms": 1891,
-      "tbt_ms": 11,
-      "speed_index_ms": 781
+      "fcp_ms": 883,
+      "lcp_ms": 1995,
+      "tbt_ms": 37,
+      "speed_index_ms": 883
     },
     {
       "run": 3,
       "score": 100,
       "cls": 0,
       "layout_shifts": 0,
-      "fcp_ms": 778,
-      "lcp_ms": 1888,
-      "tbt_ms": 43,
-      "speed_index_ms": 869
+      "fcp_ms": 779,
+      "lcp_ms": 779,
+      "tbt_ms": 17,
+      "speed_index_ms": 779
     }
   ],
   "budget_check": {
-    "performance_score_min": "pass (100, 100, 100 vs 90)",
+    "performance_score_min": "pass (100, 99, 100 vs 90)",
     "size_grid_shift_px_max": "pass (layout shift 0 in all runs vs 0)",
     "size_button_min_px": "pass (smallest side 48px vs 44, measured in the browser at 375 wide)"
   },
-  "layout": "After the spacing change: title 106px, photo 196px, size buttons 12px apart",
+  "layout": "Generous spacing: title 132px, photo 220px, size rows 16px apart and columns 12px apart",
   "full_report": "lighthouse-live-report.html (run 2)"
 }
