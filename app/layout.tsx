@@ -6,7 +6,8 @@ import "./globals.css";
 const geist = Geist({
   variable: "--font-geist",
   subsets: ["latin"],
-  display: "swap",
+  // "optional": Geist is used only if it arrives in time. It never swaps in late, so text cannot shift.
+  display: "optional",
 });
 
 export const metadata: Metadata = {
