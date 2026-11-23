@@ -2,7 +2,7 @@ type NavProps = {
   bagCount: number;
 };
 
-// 56px nav bar. Nike Swoosh on the left (no back button), like Nike's mobile page. Icons: 24px, 1.75 stroke.
+// 56px nav bar. Nike Swoosh (45 x 16.5px) on the left (no back button), like Nike's mobile page. Icons: 24px, 1.75 stroke.
 export default function Nav({ bagCount }: NavProps) {
   return (
     <header className="nav gutter">
