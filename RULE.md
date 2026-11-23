@@ -2,9 +2,9 @@
 
 These rules are checked by the Zero University reviewers.
 
-## 1. Every stage's prompt goes in the repo
+## 1. Every stage's prompt is saved, privately
 
-Whenever the project owner gives a prompt for a stage, save it in this repo as its own file, named `<STAGE>-PROMPT.md` (for example `BUILD-PROMPT.md`). Do this for each and every stage, so a reviewer can read the prompt and check what was built against it.
+Whenever the project owner gives a prompt for a stage, save it in this folder as its own file, named `<STAGE>-PROMPT.md` (for example `BUILD-PROMPT.md`). Do this for each and every stage, so the owner can read the prompt and check what was built against it.
 
 Each prompt file has:
 
@@ -13,9 +13,9 @@ Each prompt file has:
 - the key rules and decisions from that stage
 - what was checked, and what was not verified
 
-## 2. Save the prompt with the work
+## 2. Prompt files stay private
 
-Save or update the prompt file in the same commit as the work for that stage, and push both to GitHub together.
+Prompt files are listed in `.gitignore` (`*-PROMPT.md`). Never commit or push them to GitHub, and never force-add them. Save or update the prompt file at the same time as the work for that stage, but only the work gets committed and pushed. A private copy is also kept in `../nike-prompts-private/`.
 
 ## 3. Be honest about what is whose
 
@@ -25,7 +25,7 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 
 `speed-budget.json` has exactly three keys: `performance_score_min`, `size_grid_shift_px_max` and `size_button_min_px`. Values may be stricter than the profile requires, never looser. Do not add or remove keys.
 
-## Prompt files so far
+## Prompt files so far (on this Mac only, not on GitHub)
 
 | Stage | File |
 |---|---|

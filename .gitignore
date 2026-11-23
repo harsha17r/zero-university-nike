@@ -1,5 +1,8 @@
 .claude/
 .DS_Store
+
+# Stage prompt files are private: kept on this Mac only, never pushed
+*-PROMPT.md
 Nike Pegasus 43 375px Mobile Page Plan.pdf
 Nike-Pegasus-43-Mobile-Plan.docx
 PLAN-for-google-docs.html
