@@ -37,3 +37,4 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 | Nike photos, photo carousel, new title block | `PHOTOS-PROMPT.md` |
 | Size guide icon, looping glass dots, bigger photo, Nike-style button | `POLISH-PROMPT.md` |
 | Size guide as a Vaul drawer, left-aligned table | `SIZEGUIDE-PROMPT.md` |
+| Tidy the repo for the live talk | `TIDY-PROMPT.md` |

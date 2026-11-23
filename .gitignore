@@ -3,6 +3,11 @@
 
 # Stage prompt files are private: kept on this Mac only, never pushed
 *-PROMPT.md
+# Private presenter script for the live talk
+PRESENT-SCRIPT.md
+
+# Private files kept on this Mac only: the deck PDF, the plan in Word/PDF, unrelated files
+local/
 Nike Pegasus 43 375px Mobile Page Plan.pdf
 Nike-Pegasus-43-Mobile-Plan.docx
 PLAN-for-google-docs.html
