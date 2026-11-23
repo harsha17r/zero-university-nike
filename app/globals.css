@@ -494,71 +494,106 @@ button {
   background: var(--fg);
 }
 
-/* Size guide sheet */
-dialog.sheet {
-  margin: auto 0 0;
-  padding: 0;
-  width: 100%;
-  max-width: 480px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 0;
-  border-radius: 16px 16px 0 0;
-  background: var(--bg);
-  color: var(--fg);
-  max-height: 78vh;
-}
-
-dialog.sheet::backdrop {
+/*
+  Size guide drawer (Vaul). Vaul does the slide, the drag and the overlay fade; this sets the look.
+  Alignment: one left edge, the 16px gutter, shared by the title, the first column's header and its numbers.
+  Three equal, left-aligned columns. The close X's drawn strokes end on the right gutter, like the dividers.
+*/
+.sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
   background: rgba(0, 0, 0, 0.5);
 }
 
+.sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 41;
+  max-width: 480px;
+  max-height: 85vh;
+  max-height: 85dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px 16px 0 0;
+  background: var(--bg);
+  color: var(--fg);
+  outline: none;
+}
+
+/* Drag handle: 8px from the top edge, centred. Overrides Vaul's default grey so it matches the other neutrals. */
+.sheet [data-vaul-handle].sheet-handle {
+  flex: none;
+  margin-top: 8px;
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  opacity: 1;
+  background: color-mix(in oklab, var(--fg) 18%, transparent);
+}
+
+/* Title row: 48px, so the title and the 44px close button share one centre line. */
 .sheet-head {
+  flex: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
-  border-bottom: 1px solid var(--line);
+  height: 48px;
+  margin-top: 4px;
 }
 
-.sheet-head h2 {
+.sheet-title {
   margin: 0;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 24px;
 }
 
+/* The X is drawn from 6 to 18 in its 24px box, so its strokes sit 16px inside the 44px tap box.
+   Pull the box 15px past the gutter so the stroke ends (with their round caps) land on the gutter. */
 .sheet-head .icon-btn {
-  margin-right: -14px;
+  margin-right: -15px;
 }
 
 .sheet-body {
-  max-height: calc(78vh - 56px);
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
+  overscroll-behavior: contain;
   padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
 }
 
 .sheet table {
   width: 100%;
+  table-layout: fixed; /* three equal columns */
   border-collapse: collapse;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .sheet th,
 .sheet td {
-  text-align: right;
-  padding: 10px 0;
+  text-align: left;
+  padding: 12px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .sheet th {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: var(--muted);
   position: sticky;
   top: 0;
+  z-index: 1;
+  padding: 8px 0;
+  border-bottom: 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  color: var(--muted);
   background: var(--bg);
+  box-shadow: inset 0 -1px 0 var(--line); /* keeps the line under the header while it sticks */
 }
 
 .sheet .gone td {
@@ -573,5 +608,11 @@ dialog.sheet::backdrop {
   .size,
   .cta {
     transition: none;
+  }
+  /* Vaul's slide and fade are skipped; the drawer just appears and goes. */
+  [data-vaul-drawer],
+  [data-vaul-overlay] {
+    transition: none !important;
+    animation-duration: 1ms !important;
   }
 }

@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import Nav from "./Nav";
 import SizeGrid from "./SizeGrid";
-import SizeGuide from "./SizeGuide";
 import Gallery from "./Gallery";
 import { LAUNCH_DATE, SIZES, isLowStock, sizeName } from "@/lib/sizes";
 import { hasLaunched, monthDayLaunch } from "@/lib/launch";
+
+// The Vaul drawer loads in its own bundle right after the page starts, so it is not part of the first JavaScript.
+const SizeGuide = dynamic(() => import("./SizeGuide"), { ssr: false });
 
 // Top of the page, in order: nav bar, title block (name, grey category line, price, launch line),
 // photo carousel, size grid. The sticky bar stays pinned to the bottom. Before the launch date from the
