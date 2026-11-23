@@ -38,3 +38,5 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 | Size guide icon, looping glass dots, bigger photo, Nike-style button | `POLISH-PROMPT.md` |
 | Size guide as a Vaul drawer, left-aligned table | `SIZEGUIDE-PROMPT.md` |
 | Tidy the repo for the live talk | `TIDY-PROMPT.md` |
+| Fewer words on slide 2 | `SLIDE2-PROMPT.md` |
+| Lighthouse proof on slide 6 | `SLIDE6-PROMPT.md` |

@@ -15,8 +15,8 @@ In the order of the talk.
 | 1. The problem | On a slow phone, the photo, font and price load late and push the size buttons down, so shoppers tap the wrong size. Slide deck, first slides. |
 | 2. The plan | [`docs/PLAN.md`](docs/PLAN.md): fold order, fixed heights, rules and decisions. Size and stock list: [`docs/PEGASUS-STOCK.md`](docs/PEGASUS-STOCK.md). |
 | 3. The phone build | The live page at phone width. Screenshots in [`evidence/screenshots/`](evidence/screenshots/). The code is in `app/`, `components/` and `lib/`. |
-| 4. The size grid stays still | [`evidence/lighthouse/speed-score.json`](evidence/lighthouse/speed-score.json): layout shift is exactly 0 in all five runs. The limits it is checked against: [`speed-budget.json`](speed-budget.json). |
-| 5. The live page and Lighthouse report | Live page link at the top. Full report: [`evidence/lighthouse/lighthouse-live-report.html`](evidence/lighthouse/lighthouse-live-report.html) (download and open in a browser). Score 100 in all five runs. Settings: [`lighthouse.config.json`](lighthouse.config.json). |
+| 4. The size grid stays still | Layout shift is exactly 0 in every Lighthouse run: the 3 newest runs in [`evidence/lighthouse/2026-11-23/`](evidence/lighthouse/2026-11-23/) and the 5 older runs in [`evidence/lighthouse/speed-score.json`](evidence/lighthouse/speed-score.json). The limits it is checked against: [`speed-budget.json`](speed-budget.json). |
+| 5. The live page and Lighthouse report | Live page link at the top. Newest reports (23 Nov 2026, latest page): [`evidence/lighthouse/2026-11-23/`](evidence/lighthouse/2026-11-23/), scores 99, 99, 100 with layout shift 0. Download a `.html` file and open it in a browser. Settings: [`lighthouse.config.json`](lighthouse.config.json). |
 | 6. The slide deck | Deck link at the top. The file is [`public/presentation.html`](public/presentation.html). |
 
 What each evidence file proves, and what was not verified: [`evidence/README.md`](evidence/README.md).
