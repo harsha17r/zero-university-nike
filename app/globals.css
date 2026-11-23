@@ -146,7 +146,7 @@ button {
   The price shows once, here. The launch line sits under the price, not beside it.
 */
 .title {
-  height: 152px;
+  height: 164px; /* 24 + 28 name + 24 category + 36 price + 28 launch line + 24 */
   padding-top: 24px;
   padding-bottom: 24px;
 }
@@ -162,11 +162,11 @@ button {
 }
 
 .meta {
-  height: 16px;
+  height: 24px;
   margin: 0;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
-  line-height: 16px;
+  line-height: 24px;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -182,15 +182,19 @@ button {
 }
 
 .launch {
-  height: 16px;
+  height: 20px;
   margin: 8px 0 0;
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 20px;
   letter-spacing: 0.01em;
   color: var(--muted);
+}
+
+.launch-soon {
+  color: #d30005;
 }
 
 .launch svg {
@@ -202,11 +206,11 @@ button {
   stroke-linejoin: round;
 }
 
-/* 3. Photo carousel. The box is fixed at 375 x 220 before any photo loads. */
+/* 3. Photo carousel. The box is fixed at 375 x 270 before any photo loads. */
 .photo {
   position: relative;
   width: 100%;
-  aspect-ratio: 375 / 220;
+  aspect-ratio: 375 / 270;
   background: var(--photo-bg);
   overflow: hidden;
 }
@@ -236,30 +240,41 @@ button {
   height: 100%;
 }
 
-/* The carousel bar: one thin segment per photo, on top of the photo's bottom edge.
-   Each segment is a 24px-tall button so it is easy to tap; only the 2px line shows. */
+/* The carousel dots: small round dots in a frosted-glass pill, centred on the photo's bottom edge.
+   It sits on top of the photo, so it adds no height. */
 .gallery-bar {
   position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 4px;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%);
   display: flex;
-  gap: 4px;
+  align-items: center;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--bg) 55%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: inset 0 0 0 0.5px color-mix(in oklab, var(--fg) 10%, transparent);
 }
 
 .seg {
-  flex: 1;
-  height: 24px;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  width: 12px;
+  height: 18px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .seg span {
   display: block;
-  width: 100%;
-  height: 2px;
-  border-radius: 1px;
-  background: color-mix(in oklab, var(--fg) 18%, transparent);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--fg) 28%, transparent);
   transition: background-color 200ms ease;
 }
 
@@ -283,7 +298,7 @@ button {
 .size-head h2 {
   margin: 0;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 24px;
 }
 
@@ -292,11 +307,18 @@ button {
   border: 0;
   padding: 0 0 0 12px;
   height: 32px;
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 500;
   color: var(--muted);
-  text-decoration: underline;
-  text-underline-offset: 3px;
   cursor: pointer;
+}
+
+.link-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 .grid {
@@ -315,7 +337,7 @@ button {
   height: 48px;
   padding: 0;
   border: 0;
-  border-radius: 8px;
+  border-radius: 4px;
   background: transparent;
   box-shadow: inset 0 0 0 1px var(--btn-ring);
   display: flex;
@@ -392,7 +414,7 @@ button {
 
 .foot {
   padding-top: 32px;
-  padding-bottom: calc(80px + 32px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(92px + 32px + env(safe-area-inset-bottom, 0px));
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.01em;
@@ -404,7 +426,7 @@ button {
   color: inherit;
 }
 
-/* 5. Sticky bar, 80px = 16 + 48 (button) + 16 */
+/* 5. Sticky bar, 92px = 16 + 60 (button) + 16. The button copies Nike's mobile Add to Bag: a 60px black pill. */
 .bar {
   position: fixed;
   left: 0;
@@ -413,7 +435,7 @@ button {
   max-width: 480px;
   margin: 0 auto;
   z-index: 20;
-  height: calc(80px + env(safe-area-inset-bottom, 0px));
+  height: calc(92px + env(safe-area-inset-bottom, 0px));
   padding-top: 16px;
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: var(--bg);
@@ -422,13 +444,14 @@ button {
 
 .cta {
   width: 100%;
-  height: 48px;
+  height: 60px;
   border: 0;
-  border-radius: 999px;
+  border-radius: 30px;
   background: var(--fg);
   color: var(--bg);
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 24px;
   cursor: pointer;
 }
 
@@ -438,8 +461,8 @@ button {
 
 /* Before the launch date: same size, clearly inactive. */
 .cta:disabled {
-  background: color-mix(in oklab, var(--fg) 12%, var(--bg));
-  color: var(--muted);
+  background: #cacacb;
+  color: var(--bg);
   cursor: not-allowed;
 }
 

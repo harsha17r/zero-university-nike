@@ -73,13 +73,7 @@ export default function ShoeApp() {
                 No ratings yet
               </>
             ) : (
-              <>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="4" y="5.5" width="16" height="14" rx="2" />
-                  <path d="M4 10h16M8 3.5v4M16 3.5v4" />
-                </svg>
-                Launching {monthDayLaunch(LAUNCH_DATE)}
-              </>
+              <span className="launch-soon">Launching {monthDayLaunch(LAUNCH_DATE)}</span>
             )}
           </p>
         </section>
@@ -90,6 +84,9 @@ export default function ShoeApp() {
           <div className="size-head">
             <h2 id="size-label">Select size</h2>
             <button className="link-btn" type="button" onClick={() => setGuideOpen(true)}>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M3 17.25c0 .414.336.75.75.75H6v-1.5h1.5V18h3.75v-1.5h1.5V18h3.75v-1.5H18V18h2.25a.75.75 0 0 0 .75-.75V10.5h1.5v6.75a2.25 2.25 0 0 1-2.25 2.25H3.75a2.25 2.25 0 0 1-2.25-2.25V10.5H3zM19.56 8l-3.03 3.03-1.06-1.06 1.22-1.22H7.31l1.22 1.22-1.06 1.06L4.44 8l3.03-3.03 1.06 1.06-1.22 1.22h9.38l-1.22-1.22 1.06-1.06z" />
+              </svg>
               Size guide
             </button>
           </div>
@@ -106,7 +103,7 @@ export default function ShoeApp() {
 
       <div className="bar gutter">
         <button className="cta" type="button" onClick={handleAddToBag} disabled={!launched}>
-          Add to bag
+          Add to Bag
         </button>
       </div>
 

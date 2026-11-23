@@ -35,3 +35,4 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 | Put the page live on Vercel | `DEPLOY-PROMPT.md` |
 | Turn the page into a slide deck | `SLIDES-PROMPT.md` |
 | Nike photos, photo carousel, new title block | `PHOTOS-PROMPT.md` |
+| Size guide icon, looping glass dots, bigger photo, Nike-style button | `POLISH-PROMPT.md` |
