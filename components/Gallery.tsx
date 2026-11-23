@@ -24,6 +24,7 @@ const PHOTOS = [
 // goes after photo 8. When a swipe lands on a copy, the scroll jumps (with no animation) to the real photo,
 // so swiping never hits an end. The server sends only the 8 real photos, so photo 1 shows first with no jump.
 const N = PHOTOS.length;
+const DOTS = 4; // how many dots show at once
 
 function Slide({ p, i, copy }: { p: (typeof PHOTOS)[number]; i: number; copy?: boolean }) {
   return (
@@ -101,18 +102,31 @@ export default function Gallery() {
         {looped && <Slide p={PHOTOS[0]} i={0} copy />}
       </BlossomCarousel>
       <div className="gallery-bar">
-        {PHOTOS.map((p, i) => (
-          <button
-            key={p.src}
-            type="button"
-            className="seg"
-            aria-label={`Show photo ${i + 1} of ${N}`}
-            aria-current={i === active}
-            onClick={() => goTo(i)}
-          >
-            <span />
-          </button>
-        ))}
+        {PHOTOS.map((p, i) => {
+          // Like Nike: only a window of 4 dots shows. The photo in view is a long pill,
+          // and an end dot with more photos past it is drawn smaller.
+          const start = Math.min(Math.max(active - 1, 0), N - DOTS);
+          const end = start + DOTS - 1;
+          const state =
+            i === active ? "active"
+            : i < start || i > end ? "hidden"
+            : (i === start && start > 0) || (i === end && end < N - 1) ? "edge"
+            : undefined;
+          return (
+            <button
+              key={p.src}
+              type="button"
+              className="seg"
+              data-state={state}
+              tabIndex={state === "hidden" ? -1 : undefined}
+              aria-label={`Show photo ${i + 1} of ${N}`}
+              aria-current={i === active}
+              onClick={() => goTo(i)}
+            >
+              <span />
+            </button>
+          );
+        })}
       </div>
     </section>
   );

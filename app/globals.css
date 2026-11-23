@@ -249,7 +249,8 @@ button {
   height: 100%;
 }
 
-/* The carousel dots: small round dots in a frosted-glass pill, centred on the photo's bottom edge.
+/* The carousel dots, like Nike's mobile page: a small frosted-glass pill on the photo's bottom edge.
+   Only 4 dots show. The photo in view is a long dark pill; an end dot with more photos past it is smaller.
    It sits on top of the photo, so it adds no height. */
 .gallery-bar {
   position: absolute;
@@ -263,7 +264,6 @@ button {
   background: color-mix(in oklab, var(--bg) 55%, transparent);
   -webkit-backdrop-filter: blur(12px) saturate(180%);
   backdrop-filter: blur(12px) saturate(180%);
-  box-shadow: inset 0 0 0 0.5px color-mix(in oklab, var(--fg) 10%, transparent);
 }
 
 .seg {
@@ -271,24 +271,41 @@ button {
   padding: 0;
   background: none;
   cursor: pointer;
-  width: 12px;
-  height: 18px;
+  width: 10px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  transition: width 250ms ease, opacity 250ms ease;
 }
 
 .seg span {
   display: block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: color-mix(in oklab, var(--fg) 28%, transparent);
-  transition: background-color 200ms ease;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: color-mix(in oklab, var(--fg) 30%, transparent);
+  transition: width 250ms ease, background-color 250ms ease, transform 250ms ease;
 }
 
-.seg[aria-current="true"] span {
+.seg[data-state="active"] {
+  width: 22px;
+}
+
+.seg[data-state="active"] span {
+  width: 14px;
   background: var(--fg);
+}
+
+.seg[data-state="edge"] span {
+  transform: scale(0.6);
+}
+
+.seg[data-state="hidden"] {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* 4. Size selector: 32px of air under the photo, 32px header, 12px before the grid. */
