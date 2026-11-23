@@ -117,8 +117,17 @@ button {
 }
 
 /* Optical edge: the drawn strokes, not the 44px boxes, sit on the 16px gutter. */
-.nav .back {
-  margin-left: -18px;
+.nav .logo {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  color: var(--fg);
+}
+
+.nav .logo svg {
+  width: 60px;
+  height: 22px;
+  fill: currentColor;
 }
 
 .nav .group:last-child {
@@ -414,7 +423,7 @@ button {
 
 .foot {
   padding-top: 32px;
-  padding-bottom: calc(92px + 32px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: calc(56px + 32px + env(safe-area-inset-bottom, 0px));
   font-size: 12px;
   line-height: 16px;
   letter-spacing: 0.01em;
@@ -426,7 +435,7 @@ button {
   color: inherit;
 }
 
-/* 5. Sticky bar, 92px = 16 + 60 (button) + 16. The button copies Nike's mobile Add to Bag: a 60px black pill. */
+/* 5. Sticky bar: Nike's mobile Add to Bag, a 56px black bar edge to edge with square corners. */
 .bar {
   position: fixed;
   left: 0;
@@ -435,18 +444,16 @@ button {
   max-width: 480px;
   margin: 0 auto;
   z-index: 20;
-  height: calc(92px + env(safe-area-inset-bottom, 0px));
-  padding-top: 16px;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  background: var(--bg);
-  border-top: 1px solid var(--line);
+  height: calc(56px + env(safe-area-inset-bottom, 0px));
+  padding: 0 0 env(safe-area-inset-bottom, 0px);
+  background: var(--fg);
 }
 
 .cta {
   width: 100%;
-  height: 60px;
+  height: 56px;
   border: 0;
-  border-radius: 30px;
+  border-radius: 0;
   background: var(--fg);
   color: var(--bg);
   font-size: 16px;
@@ -456,18 +463,18 @@ button {
 }
 
 .cta:active {
-  transform: scale(0.99);
+  background: color-mix(in oklab, var(--fg) 85%, var(--bg));
 }
 
-/* Before the launch date: same size, clearly inactive. */
+/* Before launch: still the black bar, with dimmed text so it reads as not tappable yet. */
 .cta:disabled {
-  background: #cacacb;
-  color: var(--bg);
+  background: var(--fg);
+  color: color-mix(in oklab, var(--bg) 50%, var(--fg));
   cursor: not-allowed;
 }
 
 .cta:disabled:active {
-  transform: none;
+  background: var(--fg);
 }
 
 /* Size guide sheet */

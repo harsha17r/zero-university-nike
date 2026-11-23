@@ -101,7 +101,7 @@ export default function ShoeApp() {
         </footer>
       </main>
 
-      <div className="bar gutter">
+      <div className="bar">
         <button className="cta" type="button" onClick={handleAddToBag} disabled={!launched}>
           Add to Bag
         </button>

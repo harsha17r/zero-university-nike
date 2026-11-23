@@ -2,16 +2,16 @@ type NavProps = {
   bagCount: number;
 };
 
-// 56px nav bar. No brand logo. One icon style: 24px, 1.75 stroke, no bounding shapes.
+// 56px nav bar. Nike Swoosh on the left (no back button), like Nike's mobile page. Icons: 24px, 1.75 stroke.
 export default function Nav({ bagCount }: NavProps) {
   return (
     <header className="nav gutter">
       <div className="group">
-        <button className="icon-btn back" type="button" aria-label="Back">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 5l-7 7 7 7" />
+        <a className="logo" href="/" aria-label="Nike home">
+          <svg viewBox="3 8.55 18 6.6" aria-hidden="true">
+            <path d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z" />
           </svg>
-        </button>
+        </a>
       </div>
       <div className="group">
         <button className="icon-btn" type="button" aria-label="Search">
