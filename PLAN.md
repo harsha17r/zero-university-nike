@@ -1,6 +1,6 @@
 # Nike Shoe Page: 375px Mobile Plan
 
-Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold and the first screen is no longer squeezed into 667px: generous spacing (24px around the title, 32px under the photo, 16px between size rows) and a 220px photo, and the page uses the launch date from the stock feed: before 10 December 2026 the sticky button says "Add to bag" but is disabled (grey) and the price row says "Launching 10 Dec"; from that date the button works and the price row says "No ratings yet". Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
+Status: first-fold order APPROVED. Decided: the 26-size grid continues below the fold and the first screen is no longer squeezed into 667px: generous spacing (24px around the title, 32px under the photo, 16px between size rows) and a 220px photo, and the page uses the launch date from the stock feed: before 10 December 2026 the sticky button says "Add to bag" but is disabled (grey) and the line under the price says "Launching December 10"; from that date the button works and that line says "No ratings yet". The photo box is a carousel of the 8 Nike Pegasus 42 photos from nike.com, with a thin bar on top (22 Nov 2026). Sold-out sizes are disabled and can't be tapped. Open: Safari visible-height test. Built in Next.js, see Tech stack.
 Design width: **375px** (iPhone SE/mini class, the smallest common phone). Anything that works here works on wider phones.
 
 ## Goal
@@ -9,7 +9,7 @@ A runner opens the page and, without pinching and with at most a short scroll, s
 ## Tech stack
 - Next.js 16 (App Router) with React 19 and TypeScript. Plain CSS in `app/globals.css`, no UI library.
 - One font, Geist, loaded with `next/font` with `display: "optional"`, so the font never swaps in late and text cannot shift. Light mode only (no dark mode).
-- Size and stock data lives in `lib/sizes.ts` and mirrors PEGASUS-STOCK.md. The photo is `public/pegasus-photo.jpg`.
+- Size and stock data lives in `lib/sizes.ts` and mirrors PEGASUS-STOCK.md. The photos are `public/pegasus/1.jpg` to `8.jpg` (Nike Pegasus 42, IB1873-105, from nike.com), shown by `components/Gallery.tsx` with Blossom Carousel (`@blossom-carousel/react`).
 - Run locally with `npm install` then `npm run dev`, and open http://localhost:3000. Check the page at 375px wide.
 - Components: `ShoeApp` (state), `Nav`, `SizeGrid`, `SizeGuide`.
 
@@ -20,12 +20,12 @@ Fold target: **375 x 667**. Taller phones (812+) just show more of the content b
 | # | Part | Height | Why it sits here |
 |---|------|--------|------------------|
 | 1 | Top nav bar | 56px | Back arrow, search, bag, menu. No brand logo. Each icon is a 44x44 tap target. Sticky. |
-| 2 | Title block | 132px | Shoe name (28), grey category line (20), "Road running shoe", and price (24) with "Launching 10 Dec" (before launch) or "No ratings yet" (after launch) on the same row, 12px between the grey line and the price, and 24px above and below. The price shows once, here, above the photo. The colorway is not shown on the page. |
-| 3 | Photo | 220px (375 wide) | One photo for now, in a fixed box so nothing jumps when it loads. No carousel yet, so no dots. |
+| 2 | Title block | 152px | Shoe name (24px medium, 28 line), grey category line "Road running shoe" (12px regular, 16 line), 12px, price (16px medium, 24 line), 8px, then "Launching December 10" (before launch) or "No ratings yet" (after launch) on its own line under the price (16 line), and 24px above and below. The price shows once, here, above the photo. The colorway is not shown on the page. Changed 22 Nov 2026 (was 132px, with the launch date to the right of the price). |
+| 3 | Photo carousel | 220px (375 wide) | 8 photos you can swipe, in a fixed box so nothing jumps when they load. A thin bar of 8 segments sits on top of the photo's bottom edge (no extra height); each segment is a 24px-tall button that jumps to its photo. |
 | 4 | Size selector | 76px + grid | 32px of air under the photo, a 32px label row "Select size / Size guide", 12px, then a 3-column grid: rows of 48px buttons, 16px between rows and 12px between columns (all 9 rows: 560px). The Pegasus has 26 sizes, so the grid continues below the first screen, see Stock data. |
 | 5 | Sticky bar | 80px | Pinned to the bottom, always reachable by thumb. Full-width 48px button with 16px padding above and below. It always says "Add to bag". Before the launch date (10 December 2026, from the stock feed) it is disabled and grey; from that date it works. |
 
-Total above the grid: 56 + 132 + 220 + 76 = **484px**. On a 375 x 667 phone that leaves room for one full row of sizes and most of a second above the sticky bar (which starts at 587px); on a 375 x 812 phone, about four rows. This is a change from the earlier plan, which squeezed the first screen into 664px. The owner chose generous spacing over fitting the fold (22 Nov 2026). Every part still has a fixed height, so nothing moves while the page loads. (History: the photo was 264px, 232px, 220px, 196px, then 220px again.)
+Total above the grid: 56 + 152 + 220 + 76 = **504px** (was 484px before the title block grew on 22 Nov 2026). On a 375 x 667 phone that leaves room for one full row of sizes and most of a second above the sticky bar (which starts at 587px); on a 375 x 812 phone, about four rows. This is a change from the earlier plan, which squeezed the first screen into 664px. The owner chose generous spacing over fitting the fold (22 Nov 2026). Every part still has a fixed height, so nothing moves while the page loads. (History: the photo was 264px, 232px, 220px, 196px, then 220px again.)
 
 ## Below the fold (scroll order)
 1. **Colorways**: swatch row, 72px. Kept below the fold to protect the size grid. Open question below.
@@ -60,11 +60,11 @@ Decision (Open decisions 5): the "Popular sizes" row was rejected because we hav
 
 ## Photo box (keeps the sizes still when the photo loads late)
 - The gallery is a fixed box, 375 x 220, reserved before any image arrives. It uses `aspect-ratio: 375 / 220` with a width and height set on the image, so the browser holds the space.
-- The box has a flat light-grey background that matches the photo background. A late photo fades in with opacity only. It never changes the box size, so nothing below it moves.
-- Photos use `object-fit: contain` with a little padding, so the toe and heel are never cropped.
+- The box has a flat light-grey background that matches the photo background. A late photo never changes the box size, so nothing below it moves.
+- The Nike photos are square, so each one fills the box (`object-fit: cover`) with its own crop position that keeps the whole shoe in view. The top-down photo of both shoes uses `contain`, so no shoe is cut off.
 - The first photo is preloaded with high fetch priority. Later photos load lazily, but their slides are the same fixed box.
-- The dots sit over the image (absolute), so they cost no height.
-- Everything under the photo has a fixed height too (132px title block, 32px + 32px + 12px size header area, 48px buttons), so the size grid never shifts.
+- The carousel bar sits over the image (absolute), so it costs no height. The carousel is Blossom Carousel: native scroll-snap, and on touch phones it loads no extra script.
+- Everything under the photo has a fixed height too (152px title block, 32px + 32px + 12px size header area, 48px buttons), so the size grid never shifts.
 - The size grid renders all 26 buttons from the stock list at once. If stock is slow, buttons show a neutral state, not a missing state.
 
 ## Sold-out sizes

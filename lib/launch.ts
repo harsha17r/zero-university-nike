@@ -38,3 +38,9 @@ export function longLaunch(date: string): string {
   const { m, d } = parts(date);
   return `${d} ${MONTHS[m - 1]}`;
 }
+
+// "December 10"
+export function monthDayLaunch(date: string): string {
+  const { m, d } = parts(date);
+  return `${MONTHS[m - 1]} ${d}`;
+}

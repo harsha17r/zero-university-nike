@@ -267,11 +267,13 @@ body.show-notes .slide.is-on .notes{display:block;position:absolute;left:0;right
 }
 @media print{
   html,body{overflow:visible;background:#000}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;transition:none !important;animation:none !important}
+  .s2 .zoom{transform:none}
   .viewport{position:static}
   .stage{position:relative;left:0;top:0;transform:none !important}
-  .slide{position:relative;opacity:1;visibility:visible;page-break-after:always}
-  .r{opacity:1;transform:none}
+  .slide{position:relative !important;inset:auto;width:1920px;height:1080px;opacity:1 !important;visibility:visible !important;page-break-after:always;break-after:page}
+  .r{opacity:1 !important;transform:none !important}
+  .notes{display:none !important}
   .before .ph,.before .grid{transform:none}
   .before .hit,.after .hit,.after .line0,.after .ph{opacity:1}
   .progress{display:none}

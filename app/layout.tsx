@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import "@blossom-carousel/react/style.css";
 import "./globals.css";
 
 // One font family for the whole page.

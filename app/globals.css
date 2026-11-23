@@ -142,53 +142,48 @@ button {
 }
 
 /*
-  2. Title block, 132px = 24 + 28 (name) + 20 (grey line) + 12 + 24 (price) + 24.
-  Price and colorway appear here once. Line height adds invisible space above and below the letters,
-  so the padding is tuned to the visible gaps: about 29px from the nav line to the top of the name,
-  and about 30px from the price to the photo.
+  2. Title block, 152px = 24 + 28 (name) + 16 (grey line) + 12 + 24 (price) + 8 + 16 (launch line) + 24.
+  The price shows once, here. The launch line sits under the price, not beside it.
 */
 .title {
-  height: 132px;
+  height: 152px;
   padding-top: 24px;
   padding-bottom: 24px;
-}
-
-.meta {
-  height: 20px;
-  margin: 0;
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .title h1 {
   margin: 0;
   height: 28px;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 28px;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
-.price-row {
-  margin-top: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 24px;
+.meta {
+  height: 16px;
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .price {
+  height: 24px;
+  margin: 12px 0 0;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 24px;
 }
 
-.reviews {
+.launch {
+  height: 16px;
+  margin: 8px 0 0;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -198,7 +193,7 @@ button {
   color: var(--muted);
 }
 
-.reviews svg {
+.launch svg {
   width: 14px;
   height: 14px;
   fill: none;
@@ -207,7 +202,7 @@ button {
   stroke-linejoin: round;
 }
 
-/* 3. Photo box, 375 x 220, reserved before the image loads. */
+/* 3. Photo carousel. The box is fixed at 375 x 220 before any photo loads. */
 .photo {
   position: relative;
   width: 100%;
@@ -216,22 +211,60 @@ button {
   overflow: hidden;
 }
 
-.photo img {
+.gallery {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  grid-template-rows: 100%; /* each slide is exactly the box height, not the square photo's height */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-snap-type: inline mandatory;
+}
+
+.slide {
+  height: 100%;
+  min-height: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.slide img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: 50% 45%;
-  animation: fade-in 240ms ease-out both;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+/* The carousel bar: one thin segment per photo, on top of the photo's bottom edge.
+   Each segment is a 24px-tall button so it is easy to tap; only the 2px line shows. */
+.gallery-bar {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 4px;
+  display: flex;
+  gap: 4px;
+}
+
+.seg {
+  flex: 1;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.seg span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background: color-mix(in oklab, var(--fg) 18%, transparent);
+  transition: background-color 200ms ease;
+}
+
+.seg[aria-current="true"] span {
+  background: var(--fg);
 }
 
 /* 4. Size selector: 32px of air under the photo, 32px header, 12px before the grid. */

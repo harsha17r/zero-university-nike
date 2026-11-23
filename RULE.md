@@ -34,3 +34,4 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 | Keep the size grid still on a slow phone | `TRACE-PROMPT.md` |
 | Put the page live on Vercel | `DEPLOY-PROMPT.md` |
 | Turn the page into a slide deck | `SLIDES-PROMPT.md` |
+| Nike photos, photo carousel, new title block | `PHOTOS-PROMPT.md` |
