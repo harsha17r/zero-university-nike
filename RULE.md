@@ -40,3 +40,4 @@ Do not present a rewrite as the owner's wording. If a prompt was written after t
 | Tidy the repo for the live talk | `TIDY-PROMPT.md` |
 | Fewer words on slide 2 | `SLIDE2-PROMPT.md` |
 | Lighthouse proof on slide 6 | `SLIDE6-PROMPT.md` |
+| Cover title leads with the score | `COVER-PROMPT.md` |
